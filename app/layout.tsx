@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
+import { cn } from "@/lib/utils";
+import Footer from "@/components/footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body className={cn(inter.className, "p-3 flex flex-col gap-2")}>
+        <Header />
+        {children}
+        <Footer />
+        <Toaster closeButton richColors position="top-right" />
+      </body>
     </html>
   );
 }
